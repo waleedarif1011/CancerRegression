@@ -1,6 +1,6 @@
 # Cancer Death Rate Regression Analysis
 
-Welcome! This project demonstrates a complete workflow for predicting cancer death rates using regression models in Python. The notebook guides you through data loading, cleaning, exploration, feature engineering, model training, and evaluation—all with clear, step-by-step explanations.
+Welcome! This project demonstrates a complete data science workflow for predicting cancer death rates using regression models in Python. The notebook guides you through data loading, cleaning, exploratory analysis, feature engineering, model training, and evaluation—all with clear, step-by-step explanations.
 
 ---
 
@@ -9,6 +9,14 @@ Welcome! This project demonstrates a complete workflow for predicting cancer dea
 - **Goal:** Predict the `target_deathrate` (cancer death rate) for US counties using demographic and health-related features.
 - **Approach:** Data is loaded, merged, cleaned, explored, and then used to train and evaluate several regression models.
 - **Tech Stack:** Python, pandas, numpy, matplotlib, seaborn, scikit-learn.
+
+---
+
+## 🔍 Analysis & Machine Learning
+
+This project is both **analysis and machine learning (ML) based**:
+- **Analysis:** Includes exploratory data analysis (EDA), visualization of missing values, feature distributions, and correlation analysis to understand the data and inform modeling decisions.
+- **Machine Learning:** Implements a full ML pipeline—feature engineering, model selection, training, evaluation, and hyperparameter tuning—to predict cancer mortality rates.
 
 ---
 
