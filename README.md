@@ -18,6 +18,8 @@ license: mit
 
 Predict **US county cancer death rates** (`target_deathrate` per 100,000) from socioeconomic and health indicators. The repo ships a six-model regularized / ensemble benchmark, saved sklearn pipeline, and a live **County Risk Explorer** Gradio demo.
 
+> **Exploratory use only.** County-level associations are **not** clinical advice and **do not** imply causation. Socioeconomic / health indicators can correlate with death rates without causing them; do not use this model for diagnosis, triage, or policy decisions about individuals.
+
 > **Live demo:** after the Hugging Face Space is created (see [Deploy](#deploy-hugging-face-space)), open the badge URL above. Until then, run locally with `python app.py`.
 
 ## Results (held-out 20%, 5-fold CV on train)
@@ -62,8 +64,12 @@ Returns JSON with `predicted_deathrate`, comparison to the US national median, c
 - **Data:** `dataset/cancer_reg.csv` merged with `dataset/avg-household-size.csv` on `geography` (3,047 counties).
 - **Features:** parse `binnedinc` intervals → midpoint; drop columns with >50% missing (`pctsomecol18_24`); median-impute `pctemployed16_over` / `pctprivatecoveragealone`; 1–99% outlier clipping; top socioeconomic + incidence features (excludes near-leakage counts).
 - **Split:** 80/20 train/test (`random_state=42`) with 5-fold CV RMSE on the train fold.
-- **Models:** Linear, Ridge, Lasso, ElasticNet, Random Forest, Gradient Boosting — winner saved to `artifacts/cancer_model.joblib`.
+- **Models:** Linear, Ridge, Lasso, ElasticNet, Random Forest, Gradient Boosting — winner saved to `artifacts/cancer_model.joblib` (joblib zlib compression level 3; ~5 MB on disk vs ~17 MB uncompressed).
 - **Demo:** Gradio County Risk Explorer with 10 interactive indicators + 3 held-out county presets (lower / median / higher predicted risk).
+
+### Artifact size & Space cold-start
+
+The shipped Random Forest artifact is compressed with `joblib.dump(..., compress=3)`. Predictions are identical to an uncompressed dump; Spaces only pay a small first-load decompress cost. Retraining (`python -m src.train`) rewrites the same compressed path. If a Space still feels slow on first request, that is expected cold-start (model load), not a missing file.
 
 ## Tests & CI
 

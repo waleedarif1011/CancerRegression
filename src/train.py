@@ -35,6 +35,9 @@ IMPORTANCE_PATH = ASSETS / "feature_importance.png"
 
 RANDOM_STATE = 42
 CV_FOLDS = 5
+# zlib compression keeps the RF artifact ~5MB (vs ~17MB uncompressed) for
+# faster Space / clone cold-start without changing predictions.
+JOBLIB_COMPRESS = 3
 
 
 def build_models() -> dict[str, Any]:
@@ -246,10 +249,10 @@ def train(
         "feature_defaults": defaults,
         "national_median_deathrate": national_median,
         "presets": presets,
-        "y_train": y_train.tolist(),
+        # Full death-rate distribution for percentile comparisons in predict().
         "y_full": y_arr.tolist(),
     }
-    joblib.dump(artifact, MODEL_PATH)
+    joblib.dump(artifact, MODEL_PATH, compress=JOBLIB_COMPRESS)
 
     summary_rows = [
         {
