@@ -193,6 +193,10 @@ def build_ui() -> gr.Blocks:
             "Adjust the top socioeconomic / health indicators for a US county "
             "to estimate **cancer death rate per 100,000**, compare against the "
             "national median, and inspect key risk drivers.\n\n"
+            "> **Exploratory use only.** These estimates reflect county-level "
+            "**correlations**, not causation. They are not clinical advice and "
+            "must not be used for diagnosis, triage, or decisions about "
+            "individuals.\n\n"
             + _metrics_blurb()
         )
         with gr.Row():

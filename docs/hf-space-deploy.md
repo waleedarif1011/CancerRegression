@@ -28,3 +28,7 @@ git push space main
 - `artifacts/` (`cancer_model.joblib`, `metrics.json`)
 - `assets/` (plots used in the UI / README)
 - `dataset/` (only required if re-training on the Space; inference uses `artifacts/`)
+
+## Artifact size / cold-start
+
+`artifacts/cancer_model.joblib` is a Random Forest saved with `joblib` zlib compression (`compress=3`, ~5 MB). That is intentional for Space cold-start and clone bandwidth; `joblib.load` decompresses transparently and predictions match an uncompressed dump. First Gradio request after a cold Space wake may still take a second or two while the model loads — that is expected.
