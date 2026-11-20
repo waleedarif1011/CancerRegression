@@ -1,0 +1,176 @@
+{
+  "n_samples": 3047,
+  "n_train": 2437,
+  "n_test": 610,
+  "features": [
+    "incidencerate",
+    "medincome",
+    "povertypercent",
+    "pctbachdeg25_over",
+    "pctpubliccoveragealone",
+    "pctemployed16_over",
+    "pcths25_over",
+    "pctpubliccoverage",
+    "pctprivatecoverage",
+    "pctunemployed16_over",
+    "pctprivatecoveragealone",
+    "medianage",
+    "percentmarried",
+    "pctmarriedhouseholds",
+    "birthrate",
+    "pctbachdeg18_24",
+    "pctempprivcoverage",
+    "avghouseholdsize",
+    "binnedinc_mid"
+  ],
+  "demo_features": [
+    "incidencerate",
+    "medincome",
+    "povertypercent",
+    "pctprivatecoverage",
+    "medianage",
+    "pctbachdeg25_over",
+    "pctpubliccoveragealone",
+    "pctemployed16_over",
+    "pctunemployed16_over",
+    "pcths25_over"
+  ],
+  "test_size": 0.2,
+  "random_state": 42,
+  "cv_folds": 5,
+  "national_median_deathrate": 178.1,
+  "best_model": "RandomForest",
+  "best": {
+    "name": "RandomForest",
+    "cv_rmse": 19.406039751920694,
+    "test_rmse": 19.732928841214193,
+    "mae": 14.361707424099974,
+    "r2": 0.5241176554681716
+  },
+  "models": [
+    {
+      "name": "Linear",
+      "cv_rmse": 19.72988660264503,
+      "cv_rmse_std": 0.8781385014862588,
+      "test_rmse": 20.49487889828923,
+      "mae": 15.224197681325887,
+      "r2": 0.4866575181744287
+    },
+    {
+      "name": "Ridge",
+      "cv_rmse": 19.72841949344854,
+      "cv_rmse_std": 0.8766506934515554,
+      "test_rmse": 20.494676589584017,
+      "mae": 15.223526167788826,
+      "r2": 0.4866676527198206
+    },
+    {
+      "name": "Lasso",
+      "cv_rmse": 19.731134782141087,
+      "cv_rmse_std": 0.8395531007161872,
+      "test_rmse": 20.574896896900377,
+      "mae": 15.267431487326448,
+      "r2": 0.4826412148038671
+    },
+    {
+      "name": "ElasticNet",
+      "cv_rmse": 19.731057040974193,
+      "cv_rmse_std": 0.7985770764709753,
+      "test_rmse": 20.516990269639916,
+      "mae": 15.223765301463516,
+      "r2": 0.4855492579805234
+    },
+    {
+      "name": "RandomForest",
+      "cv_rmse": 19.406039751920694,
+      "cv_rmse_std": 0.9280349709460287,
+      "test_rmse": 19.732928841214193,
+      "mae": 14.361707424099974,
+      "r2": 0.5241176554681716
+    },
+    {
+      "name": "GradientBoosting",
+      "cv_rmse": 19.69262411255311,
+      "cv_rmse_std": 0.6770363871651206,
+      "test_rmse": 19.840953515052785,
+      "mae": 14.632752710486315,
+      "r2": 0.5188931147881626
+    }
+  ],
+  "feature_importance": {
+    "incidencerate": 0.2254241489918304,
+    "medincome": 0.05217342462257985,
+    "povertypercent": 0.03273754032968457,
+    "pctbachdeg25_over": 0.2403518512469328,
+    "pctpubliccoveragealone": 0.046003410879379585,
+    "pctemployed16_over": 0.03152082022248923,
+    "pcths25_over": 0.0606886317958122,
+    "pctpubliccoverage": 0.019028859208390377,
+    "pctprivatecoverage": 0.034255429757553364,
+    "pctunemployed16_over": 0.033708835036518274,
+    "pctprivatecoveragealone": 0.015043516778380287,
+    "medianage": 0.023900603853647277,
+    "percentmarried": 0.030537585156612108,
+    "pctmarriedhouseholds": 0.03367849540843684,
+    "birthrate": 0.033920535991455954,
+    "pctbachdeg18_24": 0.02914533827021409,
+    "pctempprivcoverage": 0.019972727843470064,
+    "avghouseholdsize": 0.03409483565601758,
+    "binnedinc_mid": 0.0038134089505951234
+  },
+  "presets": [
+    {
+      "label": "Lower-risk county",
+      "actual_deathrate": 114.2,
+      "demo_values": {
+        "incidencerate": 376.2,
+        "medincome": 57644.0,
+        "povertypercent": 11.6,
+        "pctprivatecoverage": 67.5,
+        "medianage": 35.2,
+        "pctbachdeg25_over": 30.3,
+        "pctpubliccoveragealone": 12.7,
+        "pctemployed16_over": 70.0,
+        "pctunemployed16_over": 8.5,
+        "pcths25_over": 20.1
+      }
+    },
+    {
+      "label": "Median-risk county",
+      "actual_deathrate": 194.4,
+      "demo_values": {
+        "incidencerate": 476.2,
+        "medincome": 45465.0,
+        "povertypercent": 15.5,
+        "pctprivatecoverage": 60.7,
+        "medianage": 49.5,
+        "pctbachdeg25_over": 16.3,
+        "pctpubliccoveragealone": 26.2,
+        "pctemployed16_over": 46.2,
+        "pctunemployed16_over": 10.4,
+        "pcths25_over": 27.5
+      }
+    },
+    {
+      "label": "Higher-risk county",
+      "actual_deathrate": 212.9,
+      "demo_values": {
+        "incidencerate": 561.67,
+        "medincome": 32961.0,
+        "povertypercent": 25.1,
+        "pctprivatecoverage": 48.7,
+        "medianage": 43.3,
+        "pctbachdeg25_over": 5.8,
+        "pctpubliccoveragealone": 32.5,
+        "pctemployed16_over": 39.6,
+        "pctunemployed16_over": 12.3,
+        "pcths25_over": 49.1
+      }
+    }
+  ],
+  "artifacts": {
+    "model": "artifacts/cancer_model.joblib",
+    "model_comparison": "assets/model_comparison.png",
+    "feature_importance": "assets/feature_importance.png"
+  }
+}
